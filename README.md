@@ -2,8 +2,10 @@ This Python program simulates a simple blockchain with basic functionality like 
 It implements the Proof-of-Work concept in the mining process for added complexity.
 
 Features:
+
 Block Structure: Each block contains a list of transactions, a timestamp, a previous block’s hash, and its own hash.
 Mining: Blocks are mined using a nonce to meet a difficulty condition (Proof-of-Work).
+
 Blockchain: A chain of blocks is maintained, and it is validated for integrity.
 Tampering Detection: The program can demonstrate how tampering with the blockchain invalidates it.
 
@@ -14,31 +16,22 @@ No external libraries are required as the program only uses built-in Python modu
 
 
 How to Run the Code
-1. Clone the Repository (If Applicable)
-If you're working with a Git repository, you can clone it to your local machine using the following command:
 
-bash
-Copy
-git clone <repository_url>
-cd <repository_directory>
 
-2. Install Python
-Ensure that you have Python installed. You can check by running:
+1. Install Python
+Ensure that you have Python installed.
 
-bash
-Copy
-python --version
-If Python is not installed, you can download it from python.org.
+You can download it from python.org.
 
-3. Run the Code
+2. Run the Code
 To run the blockchain simulation, follow these steps:
 
 Open a terminal or command prompt.
 Navigate to the directory where the Blockchain.py script is located.
 Run the Python script using the following command:
-bash
-Copy
+
 python Blockchain.py
+
 Expected Output
 When the script runs, you should see the following outputs:
 
@@ -47,8 +40,6 @@ A message validating the blockchain.
 A demonstration of how tampering with the blockchain is detected.
 Example Output:
 
-bash
-Copy
 BigBlock 0: [timeStamp: 1632650280.12345, Transactions: ['First Block Transaction'], Previous Hash: 0, Current Hash: <hash_value>]
 BigBlock 1: [timeStamp: 1632650285.56789, Transactions: ['Trans1', 'Trans2'], Previous Hash: <previous_hash>, Current Hash: <hash_value>]
 BigBlock 2: [timeStamp: 1632650290.87654, Transactions: ['Trans3', 'Trans4'], Previous Hash: <previous_hash>, Current Hash: <hash_value>]
@@ -103,6 +94,7 @@ The sha256() function from the hashlib module is used to generate the block’s 
 Blockchain Validation:
 
 The validateChain() method checks the integrity of the blockchain by verifying the hashes between consecutive blocks. If any tampering is detected, it prints an error message.
+
 Demonstrating Tampering:
 
 testTamper() modifies different parts of a block (transactions, index, previous hash, current hash) to show how these changes break the blockchain’s validity.

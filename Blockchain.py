@@ -1,8 +1,8 @@
-#imports for hashing and timestamps
+#Imports for hashing and timestamps
 import hashlib
 import time
 
-#make blockchain class
+#Make blockchain class
 #This class is unused by the rest of the program but is here to show progress was made. 
 #class Block:
     #set fields
@@ -20,9 +20,9 @@ import time
     #def __str__(self):
     #   return f"Block {self.index}: [timeStamp: {self.timeStamp}, Transactions: {self.transactions}, Previous Hash: {self.prevHash}, Current Hash: {self.currHash}]"
     
-#make a Big block class for the optional bonus
+#Make a BigBlock class for the optional bonus
 class BigBlock:
-    #set fields
+    #Set fields
     def __init__(self, bigIndex, bigTimeStamp, bigTransactions, bigPrevHash, difficulty=4):
         self.bigIndex = bigIndex
         self.bigTimeStamp = bigTimeStamp
@@ -32,17 +32,17 @@ class BigBlock:
         self.bigCurrHash = self.mineBlock()  # The block's hash is computed
 
     def mineBlock(self):
-        j = 0 #initialize the number used once
-        while True: # start an infinite loop that will try different values for j
-            #create a string of the block's data
+        j = 0 #Initialize the number used once
+        while True: #Start an infinite loop that will try different values for j
+            #Create a string of the block's data
             bigBlockString = f"{self.bigIndex}{self.bigTimeStamp}{self.bigTransactions}{self.bigPrevHash}{j}"
-            #hash the block string using SHA-256 and get the hexadecimal representation
+            #Hash the block string using SHA-256 and get the hexadecimal representation
             bigBlockHash = hashlib.sha256(bigBlockString.encode('utf-8')).hexdigest()
-            # Check if the hash starts with the required number of zeros
+            #Check if the hash starts with the required number of zeros
             if bigBlockHash[:self.difficulty] == '0' * self.difficulty:
                 return bigBlockHash
             j += 1
-    #print each block
+    #Print each block
     def __str__(self):
         return f"BigBlock {self.bigIndex}: [timeStamp: {self.bigTimeStamp}, Transactions: {self.bigTransactions}, Previous Hash: {self.bigPrevHash}, Current Hash: {self.bigCurrHash}]"
 
@@ -53,14 +53,14 @@ class Blockchain:
 	#create the first block from which we will seed all other blocks
         self.createFirstBlock()
         
-    #create the first block
+    #Create the first block
     def createFirstBlock(self):
         # First block has no previous block, so its prevHash is set to 0
         firstBlock = BigBlock(0, time.time(), ["First Block Transaction"], "0")
         #the below attaches our first block to the chain array
         self.chain.append(firstBlock)
         
-    #add a new block
+    #Add a new block
     def addBlock(self, transactions):
         #grab the block at the end of the chain
         prevBlock = self.chain[-1]
@@ -73,7 +73,7 @@ class Blockchain:
         #add our new block to the chain array
         self.chain.append(newBlock)
         
-    #validate the blockchain
+    #Validate the blockchain
     def validateChain(self):
         for i in range(1, len(self.chain)):
             bigPrevBlock = self.chain[i - 1]
@@ -89,11 +89,12 @@ class Blockchain:
         print("BigBlockchain is valid!")
         return True
 
-    #print the blockchain
+    #Print the blockchain
     def printChain(self):
         for block in self.chain:
             print(block)
-            
+
+    #Helper Method for running tests
     def testTamper(self):
         print("\nTampering with block data...")
         print("Let's try to change block 1 to Hacked via myBlockchain.chain[1].bigTransactions = ['Hacked']")
@@ -136,8 +137,8 @@ if __name__ == "__main__":
     myBlockchain = Blockchain()
 
     # Add some blocks to the blockchain
-    myBlockchain.addBlock(["Trans1", "Trans2"])
-    myBlockchain.addBlock(["Trans3", "Trans4"])
+    myBlockchain.addBlock(["Wow Reed", "This is Great"])
+    myBlockchain.addBlock(["I think", "We'll offer you the position"])
 
     # Print the blockchain
     myBlockchain.printChain()
