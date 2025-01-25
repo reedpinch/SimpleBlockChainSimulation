@@ -2,6 +2,7 @@
 import hashlib
 import time
 
+
 #Make blockchain class
 #This class is unused by the rest of the program but is here to show progress was made. 
 #class Block:

@@ -55,6 +55,7 @@ BigBlockchain is valid!
 etc.
 
 Code Explanation
+
 1. BigBlock Class
 This class represents a block in the blockchain. Each block contains:
 
